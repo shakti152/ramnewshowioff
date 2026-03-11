@@ -72,3 +72,21 @@ module "kv" {
   resource_group_name  = "rg-gochu"
   
 }
+module "virtual_network" {
+  depends_on = [module.resource_group]
+  source     = "../modules/azurerm_virtual_network"
+
+  virtual_network_name          = "vnet-tondu"
+  resource_group_name           = "rg-tondu"
+  virtual_network_location      = "centralindia"
+  virtual_network_address_space = ["10.0.0.0/16"]
+}
+module "virtual_network" {
+  depends_on = [module.resource_group]
+  source     = "../modules/azurerm_virtual_network"
+
+  virtual_network_name          = "vnet-dhondhu"
+  resource_group_name           = "rg-dhondhu"
+  virtual_network_location      = "centralindia"
+  virtual_network_address_space = ["10.0.0.0/16"]
+}
